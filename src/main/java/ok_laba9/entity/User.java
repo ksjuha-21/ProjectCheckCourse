@@ -28,10 +28,10 @@ public class User implements Serializable{
     @Column(name = "fullname", length = 50)
     private String fullname;
 
-    @ManyToOne(targetEntity = Role.class)
+    @ManyToOne(targetEntity = Role.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Role role;
 
-    @ManyToOne(targetEntity = Course.class)
+    @ManyToOne(targetEntity = Course.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Course course;
 
     public User (){
@@ -39,6 +39,27 @@ public class User implements Serializable{
         super();
     }
 
+    public long getId() {
+        return id;
+    }
+
+
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 
     public String getLogin() {
         return login;

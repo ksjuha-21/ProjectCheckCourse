@@ -23,7 +23,7 @@ public class Role {
     @Column(name = "title")
     private  String title;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "role", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "user2role",
     joinColumns = @JoinColumn(name = "role_id"),
     inverseJoinColumns = @JoinColumn(name = "user_id"))

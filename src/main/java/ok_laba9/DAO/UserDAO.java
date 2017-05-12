@@ -9,7 +9,7 @@ import java.util.List;
  * Created by toshiba_admin on 12.05.2017.
  */
 public interface UserDAO<K,T> {
-    boolean create(T entity, Role role, Course course) throws DAOException;
+    K  create(T entity, Role role, Course course) throws DAOException;
 
 
     boolean deleteFromUser (K id) throws DAOException;

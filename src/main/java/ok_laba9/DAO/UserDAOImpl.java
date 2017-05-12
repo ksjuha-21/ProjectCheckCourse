@@ -1,35 +1,48 @@
 package ok_laba9.DAO;
 
+import ok_laba9.HibernateUtil;
 import ok_laba9.entity.Course;
 import ok_laba9.entity.Role;
+import ok_laba9.entity.User;
+import org.hibernate.Session;
 
 import java.util.List;
 
 /**
  * Created by toshiba_admin on 12.05.2017.
  */
-public class UserDAOImpl implements UserDAO {
-    public boolean create(Object entity, Role role, Course course) throws DAOException {
+public class UserDAOImpl implements UserDAO<Long,User> {
+
+    public Long create(User entity, Role role, Course course) throws DAOException {
+
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+
+        session.saveOrUpdate(entity);
+
+        session.getTransaction().commit();
+
+        return entity.getId();
+    }
+
+    public boolean deleteFromUser(Long id) throws DAOException {
         return false;
     }
 
-    public boolean deleteFromUser(Object id) throws DAOException {
-        return false;
-    }
+    public User update(User entity) throws DAOException {
 
-    public Object update(Object entity) throws DAOException {
         return null;
     }
 
-    public Object getUserFindInfoForUser(Object id, Object user) throws DAOException {
+    public User getUserFindInfoForUser(Long id, User user) throws DAOException {
         return null;
     }
 
-    public Object getIdByLoginAndPassword(String login, String password) throws DAOException {
+    public User getIdByLoginAndPassword(String login, String password) throws DAOException {
         return null;
     }
 
-    public List getAllUserByIdCourse(Course course) throws DAOException {
+    public List<User> getAllUserByIdCourse(Course course) throws DAOException {
         return null;
     }
 }
