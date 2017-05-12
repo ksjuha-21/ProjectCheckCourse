@@ -1,6 +1,9 @@
 package ok_laba9.DAO;
 
-import ok_laba9.DAO.DAOException
+import ok_laba9.DAO.DAOException;
+import ok_laba9.entity.Course;
+import ok_laba9.entity.Role;
+
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
